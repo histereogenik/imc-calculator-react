@@ -1,9 +1,9 @@
-import Header from "./components/Header";
+import Header from "./components/HeaderBMI";
 
 function App() {
   return (
     <>
-    <Header></Header>
+    <Header/>
     </>
   )
 }
