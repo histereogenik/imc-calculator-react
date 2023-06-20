@@ -1,0 +1,10 @@
+.header {
+    background-image: url('https://www.programasaudefacil.com.br/images/banners/calculadora-imc.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.container_header {
+    padding: 25vw 5.5vw 0;
+}

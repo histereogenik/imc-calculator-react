@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title-color {
+    color: rgb(31, 94, 175);
+}
+
+.text-color {
+    color: rgb(112, 112, 112);
+}
