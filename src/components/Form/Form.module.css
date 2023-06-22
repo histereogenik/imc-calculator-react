@@ -1,0 +1,11 @@
+.container_form {
+    padding: 0 5.5vw;    
+}
+
+.input_area {
+    border: 1.5px solid rgb(31, 94, 175);
+    border-radius: 10px;
+    padding: 10px 6px;
+    font-size: 13px;
+    width: 100%;
+}
