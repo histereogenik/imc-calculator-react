@@ -1,35 +1,42 @@
 import { useState } from 'react';
+import InputMask from 'react-input-mask';
 import styles from './Form.module.css';
 
 
 const Form = () => {
-    const [height, setHeight] = useState(0);
-    const [weight, setWeight] = useState(0);
+    const [height, setHeight] = useState('');
+    const [weight, setWeight] = useState('');
     const [showBMI, setShowBMI] = useState(false);
+    const [bmi, setBMI] = useState(0);
 
     const calculateBMI = () => {
-        let squareHeight = height * height;
+        let parsedHeight = parseFloat(height.replace(',', '.'));
+        let squareHeight = parsedHeight * parsedHeight;
         let valueBMI = weight / squareHeight;
 
-        if (height > 0 && weight > 0) {
+        if (parsedHeight > 0 && weight > 0) {
+            setBMI(valueBMI);
             setShowBMI(true);
-            return valueBMI;
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        calculateBMI();
+    }
+
     return (
-        <form onSubmit={calculateBMI}>
+        <form onSubmit={handleSubmit}>
             <div className={styles.container_form}>
                 <div className="row align-items-center mt-1 mb-3">
                     <div className="col-md-2">
                         <span className="title-color">Height</span>
-                        <input id="height" className={styles.input_area} type="number" placeholder="meters" onBlur={e => setHeight(e.target.value)} />
+                        <InputMask id="height" className={styles.input_area} mask="9,99" placeholder="meters" onBlur={e => setHeight(e.target.value)} required />
                     </div>
                     <div className="col-md-2">
                         <span className="title-color">Weight</span>
-                        <input id="weight" className={styles.input_area} type="number" placeholder="kilograms" onBlur={e => setWeight(e.target.value)} />
+                        <input id="weight" className={styles.input_area} type="number" maxLength="3" placeholder="kilograms" onBlur={e => setWeight(parseFloat(e.target.value))} required />
                     </div>
-                    {height}/{weight}
                     <div className="w-100 mt-1"></div>
                     <div className="col-md-2 d-flex">
                         <button id="calcBtn" className="btn btn-primary ps-3 pe-4 rounded-pill me-4" type="submit">Calculate</button>
@@ -49,7 +56,7 @@ const Form = () => {
                     <div className="col-md-6">
                         <span className="btn btn-lg btn-success ps-3 pe-4 rounded-pill me-4">
                             Your BMI: {showBMI && (
-                                <span id="yourBmi">{calculateBMI()}</span>
+                                <span id="yourBmi">{bmi.toFixed(2)}</span>
                             )}
                         </span>
                     </div>
