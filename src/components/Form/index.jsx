@@ -31,15 +31,15 @@ const Form = () => {
                 <div className="row align-items-center mt-1 mb-3">
                     <div className="col-md-2">
                         <span className="title-color">Height</span>
-                        <InputMask id="height" className={styles.input_area} mask="9,99" placeholder="meters" onBlur={e => setHeight(e.target.value)} required />
+                        <InputMask className={styles.input_area} mask="9,99" placeholder="meters" onBlur={e => setHeight(e.target.value)} required />
                     </div>
                     <div className="col-md-2">
                         <span className="title-color">Weight</span>
-                        <input id="weight" className={styles.input_area} type="number" maxLength="3" placeholder="kilograms" onBlur={e => setWeight(parseFloat(e.target.value))} required />
+                        <input className={styles.input_area} type="number" maxLength="3" placeholder="kilograms" onBlur={e => setWeight(parseFloat(e.target.value))} required />
                     </div>
                     <div className="w-100 mt-1"></div>
                     <div className="col-md-2 d-flex">
-                        <button id="calcBtn" className="btn btn-primary ps-3 pe-4 rounded-pill me-4" type="submit">Calculate</button>
+                        <button className="btn btn-primary ps-3 pe-4 rounded-pill me-4" type="submit">Calculate</button>
                         <button 
                             className="btn btn-warning ps-4 pe-5 pt-2 pb-2 rounded-pill" 
                             type="reset"
@@ -56,7 +56,7 @@ const Form = () => {
                     <div className="col-md-6">
                         <span className="btn btn-lg btn-success ps-3 pe-4 rounded-pill me-4">
                             Your BMI: {showBMI && (
-                                <span id="yourBmi">{bmi.toFixed(2)}</span>
+                                <span>{bmi.toFixed(1)}</span>
                             )}
                         </span>
                     </div>
